@@ -1,34 +1,104 @@
 
+let previousPosition = document.documentElement.scrollTop || window.scrollY;
+console.log(previousPosition);
 
-const home = document.getElementById("home");
-const rect = home.getBoundingClientRect();
-
-const about = document.getElementById("about-us");
-const rectTwo = home.getBoundingClientRect();
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("arrow").classList.add("hidden")
+    document.getElementById("arrow").classList.add("hidden");
+
+    previousPosition = 0;
+    let aInNav = document.querySelectorAll("#nav a");
+    if( previousPosition > 0) {
+        document.getElementById("nav").classList.remove("nav-links");
+        document.getElementById("nav").classList.add("new-nav");
+        for(let i = 0; i < aInNav.length; i++){
+            aInNav[i].classList.add("new-a");
+        }
+        document.querySelector("h1").style.marginTop = "15%";
+        document.getElementById("arrow").classList.remove("hidden");
+    } else if(previousPosition === 0 || previousPosition < 0) {
+        document.getElementById("nav").classList.add("nav-links");
+        document.getElementById("nav").classList.remove("new-nav");
+        for(let i = 0; i < aInNav.length; i++){
+            aInNav[i].classList.remove("new-a");
+        }
+    }
 })
 
-let previousPosition = window.scrollY || document.documentElement.scrollTop;
 
-window.onscroll = function() {
-    let currentPosition = scrollY || document.documentElement.scrollTop;
-    let aInNav = document.querySelectorAll("#nav a")
+
+window.onscroll = function() {    
+    
+    let currentPosition = document.documentElement.scrollTop || scrollY; 
+    let aInNav = document.querySelectorAll("#nav a");
     if(currentPosition > previousPosition) {
         document.getElementById("nav").classList.remove("nav-links");
         document.getElementById("nav").classList.add("new-nav");
         for(let i = 0; i < aInNav.length; i++){
-            aInNav[i].classList.add("new-a")
+            aInNav[i].classList.add("new-a");
         }
         document.querySelector("h1").style.marginTop = "15%";
-        document.getElementById("arrow").classList.remove("hidden")
+        document.getElementById("arrow").classList.remove("hidden");
     } else if(currentPosition == previousPosition || currentPosition < previousPosition) {
         document.getElementById("nav").classList.add("nav-links");
         document.getElementById("nav").classList.remove("new-nav");
         for(let i = 0; i < aInNav.length; i++){
-            aInNav[i].classList.remove("new-a")
+            aInNav[i].classList.remove("new-a");
         }
     }
-
 }
+
+
+
+
+
+
+document.getElementById("arrow").addEventListener("click", () => {
+    
+    console.log(homeRect)
+    window.scrollTo({
+        top: homeRect.top,
+        left: homeRect.left,
+        behavior: "smooth",
+    })
+})
+
+document.getElementById("home").addEventListener("click", () => {
+    let home = document.getElementById("home");
+    let homeRect = home.getBoundingClientRect();
+    window.scrollTo({
+        top: homeRect.top,
+        left: homeRect.left,
+        behavior: "smooth",
+    })
+})
+
+document.getElementById("about-us").addEventListener("click", () => {
+    let aboutUs = document.getElementById("about-us");
+    let aboutUsRect = aboutUs.getBoundingClientRect();
+    window.scrollTo({
+        top: aboutUsRect.top,
+        left: aboutUsRect.left,
+        behavior: "smooth",
+    })
+})
+
+document.getElementById("services").addEventListener("click", () => {
+    let services = document.getElementById("services");
+    let servicesRect = services.getBoundingClientRect();
+    window.scrollTo({
+        top: servicesRect.top,
+        left: servicesRect.left,
+        behavior: "smooth",
+    })
+})
+
+document.getElementById("tours").addEventListener("click", () => {
+    let tours = document.getElementById("tours");
+    let toursRect = tours.getBoundingClientRect();
+    window.scrollTo({
+        top: toursRect.top,
+        left: toursRect.left,
+        behavior: "smooth",
+    })
+})
