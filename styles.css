@@ -18,7 +18,7 @@ section{
 }
 
 a{
-    color: darkblue;
+    color: rgb(0, 0, 113);
     text-decoration: none;
 }
 
@@ -75,10 +75,6 @@ footer{
 
 .new-a:last-of-type{
     margin-right: 3%;
-}
-
-.smooth{
-    border: 10px solid #000;
 }
 
 .hidden{

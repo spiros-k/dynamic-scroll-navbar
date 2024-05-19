@@ -52,10 +52,9 @@ window.onscroll = function() {
 
 
 
-
 document.getElementById("arrow").addEventListener("click", () => {
-    
-    console.log(homeRect)
+    let home = document.getElementById("home");
+    let homeRect = home.getBoundingClientRect();
     window.scrollTo({
         top: homeRect.top,
         left: homeRect.left,
